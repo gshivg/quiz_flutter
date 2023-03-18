@@ -1,6 +1,6 @@
 {
-    "name": "quir_flutter",
-    "short_name": "quir_flutter",
+    "name": "quiz_flutter",
+    "short_name": "quiz_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
