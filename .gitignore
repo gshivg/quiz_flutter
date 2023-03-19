@@ -79,3 +79,7 @@ database-debug.log
 ui-debug.log
 
 *.todo
+
+# Flutter/Dart/Pub related
+/android/
+/ios/
