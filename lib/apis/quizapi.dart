@@ -12,24 +12,41 @@ import 'package:quiz_flutter/sensitive_information/data.dart';
 class QuizApiHelper {
   String method = "GET";
   String url = 'https://quizapi3.p.rapidapi.com/api/v1/questions';
+  String authority = "quizapi3.p.rapidapi.com";
+  String path = "/api/v1/questions";
   String key = API_KEY;
 
-  void getQuestion(
-    String category, {
+  Future<dynamic> getQuestion({
+    String? category,
     String difficulty = 'easy',
     required int limit,
   }) async {
+    final uri = Uri.https(authority, path, {
+      'category': category ?? '',
+      'difficulty': difficulty,
+      'limit': limit.toString(),
+    });
     try {
       var questions = await http.get(
-        Uri.parse(url),
+        uri,
         headers: {
           'X-Api-Key': API_KEY,
-          'limit': limit.toString(),
-          'category': category,
         },
       );
       var responseData = jsonDecode(questions.body);
-      log(responseData[1].toString());
+      for (var data in responseData) {
+        data.removeWhere((key, value) => key == 'id');
+        data.removeWhere((key, value) => key == 'explanation');
+        data.removeWhere((key, value) => key == 'description');
+        data.removeWhere((key, value) => key == 'category');
+        data.removeWhere((key, value) => key == 'tip');
+        data.removeWhere((key, value) => key == 'tags');
+        data.removeWhere((key, value) => key == 'difficulty');
+      }
+      for (var data in responseData) {
+        log(data.toString());
+      }
+      return responseData;
     } catch (e) {
       log(e.toString());
     }
