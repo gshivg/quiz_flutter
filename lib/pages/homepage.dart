@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_flutter/Models/theme.dart';
-import 'package:switcher_button/switcher_button.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
