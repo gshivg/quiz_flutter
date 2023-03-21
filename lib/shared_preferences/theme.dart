@@ -1,5 +1,7 @@
 // This file contains the ThemeSharedPreferences class which is used to store the theme preference in shared preferences.
 
+// ignore_for_file: constant_identifier_names
+
 // Imported Dependencies
 import 'package:shared_preferences/shared_preferences.dart';
 
