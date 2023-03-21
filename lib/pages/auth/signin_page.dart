@@ -1,4 +1,4 @@
-// This file contains the MyHomePage class which is the home page of the app.
+// This file contains the code for the sign in page
 
 // Flutter Dependencies
 import 'package:flutter/material.dart';
@@ -6,42 +6,34 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
-import 'package:quiz_flutter/pages/quizpage.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key, required this.signInKey});
-  String signInKey;
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
+
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
-          appBar: standardAppBar(themeNotifier, 'Home Page'),
+          appBar: standardAppBar(themeNotifier, 'Quiz Page'),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'My Tech Quiz',
+                  'Sign In Page',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
+                
               ],
             ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const QuizPage()));
-            },
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
           ),
         );
       },

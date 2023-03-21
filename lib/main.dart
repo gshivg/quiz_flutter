@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 // Imported Dependencies
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:quiz_flutter/pages/auth/signin_page.dart';
+import 'package:quiz_flutter/shared_preferences/signin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // Project Dependencies
 import 'package:quiz_flutter/styles/theme.dart';
 import 'package:quiz_flutter/Models/theme.dart';
@@ -16,12 +19,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  MyApp({super.key});
+  String? signInKey = null;
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -31,9 +34,16 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Quiz App',
           theme: themeModel.isDark ? darkTheme() : lightTheme(),
-          home: const MyHomePage(),
+          home: signInKey == null
+              ? const SignInPage()
+              : MyHomePage(signInKey: signInKey!),
         );
       }),
     );
+  }
+
+  checkSignIn() async {
+    SignInPreferences signInPreferences = SignInPreferences();
+    signInKey = await signInPreferences.getSignIn();
   }
 }
