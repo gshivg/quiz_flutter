@@ -2,6 +2,8 @@
 
 // Developer Dependencies
 import 'dart:developer';
+// Dart Dependencies
+import 'dart:convert';
 // Imported Dependencies
 import 'package:http/http.dart' as http;
 // Project Dependencies
@@ -18,15 +20,16 @@ class QuizApiHelper {
     required int limit,
   }) async {
     try {
-      var questions = http.get(
+      var questions = await http.get(
         Uri.parse(url),
         headers: {
-          'apiKey': 'YicDG9KrhU29rxHWHKkT0gJkmWwXIPkT2LxJVSVA',
+          'X-Api-Key': API_KEY,
           'limit': limit.toString(),
           'category': category,
         },
       );
-      log(questions.toString());
+      var responseData = jsonDecode(questions.body);
+      log(responseData[1].toString());
     } catch (e) {
       log(e.toString());
     }
