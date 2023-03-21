@@ -11,7 +11,6 @@ import 'package:quiz_flutter/sensitive_information/data.dart';
 
 class QuizApiHelper {
   String method = "GET";
-  String url = 'https://quizapi3.p.rapidapi.com/api/v1/questions';
   String authority = "quizapi3.p.rapidapi.com";
   String path = "/api/v1/questions";
   String key = API_KEY;
