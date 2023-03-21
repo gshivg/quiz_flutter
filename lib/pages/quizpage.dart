@@ -27,24 +27,20 @@ class _QuizPageState extends State<QuizPage> {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
-            appBar: standardAppBar(themeNotifier),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Theme Switcher',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                ],
-              ),
+          appBar: standardAppBar(themeNotifier, 'Quiz Page'),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'My Tech Quiz',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ],
             ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {},
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ));
+          ),
+        );
       },
     );
   }

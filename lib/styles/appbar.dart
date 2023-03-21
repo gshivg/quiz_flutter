@@ -7,10 +7,8 @@ import 'package:flutter/material.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
 
-AppBar standardAppBar(ThemeModel themeNotifier) => AppBar(
-      title: const Text(
-        'Home Page',
-      ),
+AppBar standardAppBar(ThemeModel themeNotifier, String title) => AppBar(
+      title: Text(title),
       actions: [
         IconButton(
           icon: Icon(

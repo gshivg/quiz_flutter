@@ -22,13 +22,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
-          appBar: standardAppBar(themeNotifier),
+          appBar: standardAppBar(themeNotifier, 'Home Page'),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Quiz App',
+                  'My Tech Quiz',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
