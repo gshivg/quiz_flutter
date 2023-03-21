@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_flutter/Models/theme.dart';
@@ -23,9 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
               actions: [
                 IconButton(
                   icon: Icon(
-                    themeNotifier.isDark
-                        ? CupertinoIcons.sun_max
-                        : CupertinoIcons.moon,
+                    themeNotifier.isDark ? Icons.light_mode : Icons.dark_mode,
                   ),
                   onPressed: () {
                     themeNotifier.toggleTheme();
