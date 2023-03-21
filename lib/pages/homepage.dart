@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// This file contains the MyHomePage class which is the home page of the app.
 
+// Flutter Dependencies
+import 'package:flutter/material.dart';
+// Imported Dependencies
+import 'package:provider/provider.dart';
+// Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/pages/quizpage.dart';
 import 'package:quiz_flutter/styles/appbar.dart';

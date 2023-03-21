@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+// This file contains the ThemeSharedPreferences class which is used to store the theme preference in shared preferences.
+
+// Imported Dependencies
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeSharedPreferences {

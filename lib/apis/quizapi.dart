@@ -1,7 +1,10 @@
+// This file contains the QuizApiHelper class which is used to get questions from the quiz api.
+
+// Developer Dependencies
 import 'dart:developer';
-
+// Imported Dependencies
 import 'package:http/http.dart' as http;
-
+// Project Dependencies
 import 'package:quiz_flutter/sensitive_information/data.dart';
 
 class QuizApiHelper {
@@ -15,10 +18,15 @@ class QuizApiHelper {
     required int limit,
   }) async {
     try {
-      var questions = http.get(Uri.parse(url), headers: {
-        'apiKey' : 'YicDG9KrhU29rxHWHKkT0gJkmWwXIPkT2LxJVSVA'
-        
-      });
+      var questions = http.get(
+        Uri.parse(url),
+        headers: {
+          'apiKey': 'YicDG9KrhU29rxHWHKkT0gJkmWwXIPkT2LxJVSVA',
+          'limit': limit.toString(),
+          'category': category,
+        },
+      );
+      log(questions.toString());
     } catch (e) {
       log(e.toString());
     }

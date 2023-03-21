@@ -1,11 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:quiz_flutter/pages/homepage.dart';
+// This is the main file of the app
 
+// Flutter Dependencies
+import 'package:flutter/material.dart';
+// Imported Dependencies
+import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+// Project Dependencies
 import 'package:quiz_flutter/styles/theme.dart';
-import 'Models/theme.dart';
-import 'firebase_options.dart';
+import 'package:quiz_flutter/Models/theme.dart';
+import 'package:quiz_flutter/firebase_options.dart';
+import 'package:quiz_flutter/pages/homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
