@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
-          appBar: standardAppBar(themeNotifier, 'Home Page'),
+          appBar: standardAppBar(themeNotifier, 'Home Page', context),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

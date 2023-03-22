@@ -35,7 +35,7 @@ class _AuthPageState extends State<AuthPage> {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
-          appBar: standardAppBar(themeNotifier, 'My Tech Quiz'),
+          appBar: standardAppBar(themeNotifier, 'My Tech Quiz', context),
           body: Center(
             child: SingleChildScrollView(
               child: Container(
@@ -57,7 +57,7 @@ class _AuthPageState extends State<AuthPage> {
                         back: signCard(false),
                       ),
                       ImageButton(() {
-                        firebaseHelper.googleSignIn(context);
+                        // firebaseHelper.googleSignIn(context);
                       }, 'google', "Google", context),
                     ],
                   ),

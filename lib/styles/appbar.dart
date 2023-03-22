@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
 
-AppBar standardAppBar(ThemeModel themeNotifier, String title) => AppBar(
+AppBar standardAppBar(ThemeModel themeNotifier, String title, BuildContext context) => AppBar(
       title: Text(title),
       actions: [
         IconButton(
@@ -15,6 +15,7 @@ AppBar standardAppBar(ThemeModel themeNotifier, String title) => AppBar(
             themeNotifier.isDark ? CupertinoIcons.sun_max : CupertinoIcons.moon,
           ),
           onPressed: () {
+            FocusScope.of(context).unfocus();
             themeNotifier.toggleTheme();
           },
         ),
