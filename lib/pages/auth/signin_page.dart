@@ -11,7 +11,6 @@ import 'package:provider/provider.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/apis/firebase.dart';
-import 'package:quiz_flutter/pages/auth/signup_page.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 import 'package:quiz_flutter/styles/buttons.dart';
 
