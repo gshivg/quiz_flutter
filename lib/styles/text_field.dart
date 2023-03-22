@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 primaryTextField(
-  TextEditingController _textEditingController,
+  TextEditingController textEditingController,
   BuildContext context,
   String labelText,
   IconData icon, {
@@ -15,6 +15,7 @@ primaryTextField(
         decoration: InputDecoration(
           label: displayLabel(labelText, icon),
         ),
+        controller: textEditingController,
       ),
     );
 
