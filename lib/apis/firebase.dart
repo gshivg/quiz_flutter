@@ -46,5 +46,11 @@ class FirebaseHelper {
     }
   }
 
-  Future<void> facebookSignIn(BuildContext context) async {}
+  Future signOut() async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      return e;
+    }
+  }
 }

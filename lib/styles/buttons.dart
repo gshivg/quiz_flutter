@@ -1,13 +1,36 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 
-SignInProviderButton(VoidCallback onPressed, String image, String title,
+ImageButton(VoidCallback onPressed, String image, String title,
         BuildContext context) =>
     ElevatedButton(
-        onPressed: onPressed, child: buttonDesign(image, title, context));
+      onPressed: onPressed,
+      child: imageButtonDesign(image, title, context),
+      style: ButtonStyle(elevation: MaterialStateProperty.all(15)),
+    );
 
-buttonDesign(String image, String title, BuildContext context) => Container(
+PrimaryButton(VoidCallback onPressed, String title, BuildContext context) =>
+    TextButton(
+      onPressed: onPressed,
+      child: primaryButtonDesign(title, context),
+    );
+
+primaryButtonDesign(String title, BuildContext context) => Container(
+      height: 50,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+        ],
+      ),
+    );
+
+imageButtonDesign(String image, String title, BuildContext context) =>
+    Container(
       height: 50,
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -27,7 +50,7 @@ buttonDesign(String image, String title, BuildContext context) => Container(
           const SizedBox(width: 20),
           Text(
             title,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ],
       ),
