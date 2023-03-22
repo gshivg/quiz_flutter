@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/apis/firebase.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
-import 'package:quiz_flutter/firebase_options.dart';
+
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
@@ -21,7 +21,6 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
-
     FirebaseHelper firebaseHelper = FirebaseHelper();
 
     return Consumer(
@@ -37,21 +36,9 @@ class _SignInPageState extends State<SignInPage> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
-                Card(
-                  margin: const EdgeInsets.only(
-                      top: 100, bottom: 200, left: 30, right: 30),
-                  elevation: 10,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        signInButton(context, 'google', 'Sign In With Google', firebaseHelper.googleSignIn(context)),
-                        signInButton(
-                            context, 'facebook', 'Sign In With Facebook', firebaseHelper.facebookSignIn(context)),
-                      ],
-                    ),
-                  ),
+                ElevatedButton(
+                  onPressed: () => {firebaseHelper.googleSignIn(context)},
+                  child: buttonDesign('google', "Google Sign In"),
                 ),
               ],
             ),
@@ -61,37 +48,32 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  signInButton(BuildContext context, String image, String title, Future<void> onPress) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: MaterialButton(
-          onPressed: () => onPress,
-          elevation: 10,
-          child: buttonDesign(image, title),
-        ),
-      );
-
-  Row buttonDesign(String image, String title) => Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            height: 30.0,
-            width: 30.0,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/$image.png'),
-                fit: BoxFit.cover,
+  buttonDesign(String image, String title) => Container(
+        width: 200,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              height: 30.0,
+              width: 30.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/$image.png'),
+                  fit: BoxFit.cover,
+                ),
+                shape: BoxShape.circle,
               ),
-              shape: BoxShape.circle,
             ),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-        ],
+            SizedBox(
+              width: 20,
+            ),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ],
+        ),
       );
 
   signup(BuildContext context) {}
