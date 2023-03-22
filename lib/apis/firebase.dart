@@ -36,11 +36,11 @@ class FirebaseHelper {
       context,
       MaterialPageRoute(
         builder: (context) => MyHomePage(
-          signInKey: user!.uid.toString(),
+          signInKey: user.uid.toString(),
         ),
       ),
     );
-    signInPreferences.setSignIn(user!.uid.toString());
+    signInPreferences.setSignIn(user.uid.toString());
     } catch (e) {
       return e;
     }
