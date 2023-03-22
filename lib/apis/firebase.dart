@@ -14,14 +14,15 @@ import 'package:quiz_flutter/shared_preferences/signin.dart';
 class FirebaseHelper {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   SignInPreferences signInPreferences = SignInPreferences();
-  
-  Future<void> googleSignIn(BuildContext context) async {
+
+  Future googleSignIn(BuildContext context) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
     if (googleSignInAccount == null) return;
 
-    final GoogleSignInAuthentication googleSignInAuthentication =
+    try {
+      final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
 
     final AuthCredential authCredential = GoogleAuthProvider.credential(
@@ -31,16 +32,17 @@ class FirebaseHelper {
     UserCredential result = await _auth.signInWithCredential(authCredential);
     User? user = result.user;
     log(user!.uid.toString());
-    if (result != null) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MyHomePage(
-            signInKey: user!.uid.toString(),
-          ),
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MyHomePage(
+          signInKey: user!.uid.toString(),
         ),
-      );
-      signInPreferences.setSignIn(user!.uid.toString());
+      ),
+    );
+    signInPreferences.setSignIn(user!.uid.toString());
+    } catch (e) {
+      return e;
     }
   }
 
