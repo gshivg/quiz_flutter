@@ -26,6 +26,9 @@ PrimaryButton(VoidCallback onPressed, String title, BuildContext context) =>
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.transparent),
             elevation: MaterialStateProperty.all(15),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+            ),
           ),
         ),
       ),
