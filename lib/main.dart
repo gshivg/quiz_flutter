@@ -1,13 +1,14 @@
 // This is the main file of the app
 
+// ignore_for_file: must_be_immutable
+
 // Flutter Dependencies
 import 'package:flutter/material.dart';
 // Imported Dependencies
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:quiz_flutter/pages/auth/signin_page.dart';
+import 'package:quiz_flutter/pages/auth/auth_page.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 // Project Dependencies
 import 'package:quiz_flutter/styles/theme.dart';
 import 'package:quiz_flutter/Models/theme.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
           title: 'Quiz App',
           theme: themeModel.isDark ? darkTheme() : lightTheme(),
           home: signInKey == null || signInKey == ''
-              ? const SignInPage()
+              ? const AuthPage()
               : MyHomePage(signInKey: signInKey!),
         );
       }),

@@ -1,5 +1,7 @@
 // This file contains the MyHomePage class which is the home page of the app.
 
+// ignore_for_file: must_be_immutable
+
 // Flutter Dependencies
 import 'package:flutter/material.dart';
 // Imported Dependencies
