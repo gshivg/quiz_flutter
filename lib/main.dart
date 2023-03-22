@@ -24,7 +24,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-  String? signInKey = null;
+  String? signInKey = '';
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Quiz App',
           theme: themeModel.isDark ? darkTheme() : lightTheme(),
-          home: signInKey == null
+          home: signInKey == null || signInKey == ''
               ? const SignInPage()
               : MyHomePage(signInKey: signInKey!),
         );
