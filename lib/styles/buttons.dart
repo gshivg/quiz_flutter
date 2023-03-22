@@ -11,20 +11,37 @@ ImageButton(VoidCallback onPressed, String image, String title,
     );
 
 PrimaryButton(VoidCallback onPressed, String title, BuildContext context) =>
-    TextButton(
-      onPressed: onPressed,
-      child: primaryButtonDesign(title, context),
+    Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(7),
+          border: Border.all(
+            color: Theme.of(context).textTheme.headlineSmall!.color!,
+          ),
+        ),
+        child: TextButton(
+          onPressed: onPressed,
+          child: primaryButtonDesign(title, context),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            elevation: MaterialStateProperty.all(15),
+          ),
+        ),
+      ),
     );
 
 primaryButtonDesign(String title, BuildContext context) => Container(
-      height: 50,
+      height: 30,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
+          const SizedBox(width: 20),
           Text(
             title,
             style: Theme.of(context).textTheme.headlineSmall,
           ),
+          const SizedBox(width: 20),
         ],
       ),
     );
