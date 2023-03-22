@@ -1,13 +1,20 @@
 // ignore_for_file: unused_local_variable, use_build_context_synchronously
 
-import 'package:firebase_auth/firebase_auth.dart';
+// Developer Dependencies
+import 'dart:developer';
+// Flutter Dependencies
 import 'package:flutter/material.dart';
+// Imported Dependencies
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+// Package Dependencies
 import 'package:quiz_flutter/pages/homepage.dart';
+import 'package:quiz_flutter/shared_preferences/signin.dart';
 
 class FirebaseHelper {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  SignInPreferences signInPreferences = SignInPreferences();
+  
   Future<void> googleSignIn(BuildContext context) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount? googleSignInAccount =
@@ -23,7 +30,7 @@ class FirebaseHelper {
     );
     UserCredential result = await _auth.signInWithCredential(authCredential);
     User? user = result.user;
-
+    log(user!.uid.toString());
     if (result != null) {
       Navigator.pushReplacement(
         context,
@@ -33,6 +40,7 @@ class FirebaseHelper {
           ),
         ),
       );
+      signInPreferences.setSignIn(user!.uid.toString());
     }
   }
 
