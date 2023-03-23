@@ -82,5 +82,5 @@ ui-debug.log
 /temp.txt
 
 # Flutter/Dart/Pub related
-/android/
-/ios/
+/android/**/*
+/ios/**/*
