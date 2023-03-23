@@ -80,7 +80,4 @@ ui-debug.log
 
 *.todo
 /temp.txt
-
-# Flutter/Dart/Pub related
-/android/**/*
-/ios/**/*
+*.log
