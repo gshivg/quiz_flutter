@@ -15,6 +15,7 @@ primaryTextField(
         decoration: InputDecoration(
           label: displayLabel(labelText, icon),
         ),
+        obscureText: isPassword,
         controller: textEditingController,
       ),
     );
