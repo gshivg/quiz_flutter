@@ -75,7 +75,7 @@ class _AuthPageState extends State<AuthPage> {
         elevation: 5,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.85,
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.6,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.min,
@@ -107,19 +107,42 @@ class _AuthPageState extends State<AuthPage> {
   signIn() => Column(
         children: [
           primaryTextField(
-              _emailController, context, 'Email', Icons.email_outlined),
+            _emailController,
+            context,
+            'Email',
+            Icons.email_outlined,
+          ),
           primaryTextField(
-              _passwordController, context, 'Password', Icons.lock_outlined),
+            _passwordController,
+            context,
+            'Password',
+            Icons.lock_outlined,
+            isPassword: true,
+          ),
         ],
       );
   signUp() => Column(
         children: [
           primaryTextField(
-              _emailController, context, 'Email', Icons.email_outlined),
+            _emailController,
+            context,
+            'Email',
+            Icons.email_outlined,
+          ),
           primaryTextField(
-              _passwordController, context, 'Password', Icons.lock_outline),
-          primaryTextField(_passwordCNFController, context, 'Confirm Password',
-              Icons.lock_outline),
+            _passwordController,
+            context,
+            'Password',
+            Icons.lock_outline,
+            isPassword: true,
+          ),
+          primaryTextField(
+            _passwordCNFController,
+            context,
+            'Confirm Password',
+            Icons.lock_outline,
+            isPassword: true,
+          ),
         ],
       );
 
