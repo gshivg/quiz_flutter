@@ -7,7 +7,7 @@ ImageButton(VoidCallback onPressed, String image, String title,
     ElevatedButton(
       onPressed: onPressed,
       child: imageButtonDesign(image, title, context),
-      style: ButtonStyle(elevation: MaterialStateProperty.all(15)),
+      style: ButtonStyle(elevation: MaterialStateProperty.all(5)),
     );
 
 PrimaryButton(VoidCallback onPressed, String title, BuildContext context) =>
