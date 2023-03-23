@@ -8,6 +8,7 @@ import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
 // Imported Dependencies
 import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/apis/firebase.dart';
@@ -39,7 +40,7 @@ class _AuthPageState extends State<AuthPage> {
           body: Center(
             child: SingleChildScrollView(
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.8,
+                height: MediaQuery.of(context).size.height * 0.85,
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 50),
                   child: Column(
@@ -71,9 +72,9 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   signCard(bool front) => Card(
-        elevation: 25,
+        elevation: 5,
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.8,
+          width: MediaQuery.of(context).size.width * 0.85,
           height: MediaQuery.of(context).size.height * 0.5,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +89,16 @@ class _AuthPageState extends State<AuthPage> {
                 ),
               ),
               front ? signIn() : signUp(),
-              otherOption(front),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  front
+                      ? PrimaryButton(signInFunction, 'Sign In', context)
+                      : PrimaryButton(signUpFunction, 'Sign Up', context),
+                  const SizedBox(height: 10),
+                  otherOption(front),
+                ],
+              ),
             ],
           ),
         ),
@@ -100,7 +110,6 @@ class _AuthPageState extends State<AuthPage> {
               _emailController, context, 'Email', Icons.email_outlined),
           primaryTextField(
               _passwordController, context, 'Password', Icons.lock_outlined),
-          PrimaryButton(() {}, 'Sign In', context),
         ],
       );
   signUp() => Column(
@@ -111,9 +120,16 @@ class _AuthPageState extends State<AuthPage> {
               _passwordController, context, 'Password', Icons.lock_outline),
           primaryTextField(_passwordCNFController, context, 'Confirm Password',
               Icons.lock_outline),
-          PrimaryButton(() {}, 'Sign Up', context),
         ],
       );
+
+  void signInFunction() {
+    Fluttertoast.showToast(msg: 'Sign In');
+  }
+
+  void signUpFunction() {
+    Fluttertoast.showToast(msg: 'Sign Up');
+  }
 
   otherOption(bool signIn) => Row(
         mainAxisSize: MainAxisSize.min,

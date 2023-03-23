@@ -42,7 +42,7 @@ primaryButtonDesign(String title, BuildContext context) => Container(
           const SizedBox(width: 20),
           Text(
             title,
-            style: Theme.of(context).textTheme.headlineSmall,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(width: 20),
         ],
