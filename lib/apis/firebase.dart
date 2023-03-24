@@ -23,24 +23,24 @@ class FirebaseHelper {
 
     try {
       final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+          await googleSignInAccount.authentication;
 
-    final AuthCredential authCredential = GoogleAuthProvider.credential(
-      idToken: googleSignInAuthentication.idToken,
-      accessToken: googleSignInAuthentication.accessToken,
-    );
-    UserCredential result = await _auth.signInWithCredential(authCredential);
-    User? user = result.user;
-    log(user!.uid.toString());
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyHomePage(
-          signInKey: user.uid.toString(),
+      final AuthCredential authCredential = GoogleAuthProvider.credential(
+        idToken: googleSignInAuthentication.idToken,
+        accessToken: googleSignInAuthentication.accessToken,
+      );
+      UserCredential result = await _auth.signInWithCredential(authCredential);
+      User? user = result.user;
+      log(user!.uid.toString());
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MyHomePage(
+            signInKey: user.uid.toString(),
+          ),
         ),
-      ),
-    );
-    signInPreferences.setSignIn(user.uid.toString());
+      );
+      signInPreferences.setSignIn(user.uid.toString());
     } catch (e) {
       return e;
     }
@@ -49,6 +49,7 @@ class FirebaseHelper {
   Future signOut() async {
     try {
       await _auth.signOut();
+      signInPreferences.deleteSignIn();
     } catch (e) {
       return e;
     }

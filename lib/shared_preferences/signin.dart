@@ -9,8 +9,14 @@ class SignInPreferences {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString(PREF_KEY, value);
   }
+
   getSignIn() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getString(PREF_KEY);
+  }
+
+  deleteSignIn() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.remove(PREF_KEY);
   }
 }
