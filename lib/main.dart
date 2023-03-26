@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => ThemeModel(),
       child: Consumer(builder: (context, ThemeModel themeModel, child) {
+        // checkSignIn();
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Quiz App',

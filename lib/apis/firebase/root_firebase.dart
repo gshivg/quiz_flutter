@@ -46,6 +46,7 @@ class FirebaseHelper {
     }
   }
 
+
   Future signOut() async {
     try {
       await _auth.signOut();

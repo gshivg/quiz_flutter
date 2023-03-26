@@ -2,9 +2,10 @@
 
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace
 
-// Flutter Dependencies
+// Developer Dependencies
 import 'dart:developer';
 
+// Flutter Dependencies
 import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
-import 'package:quiz_flutter/apis/firebase.dart';
+import 'package:quiz_flutter/apis/firebase/root_firebase.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 import 'package:quiz_flutter/styles/buttons.dart';
 import 'package:quiz_flutter/styles/text_field.dart';
@@ -35,7 +36,6 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    log('${MediaQuery.of(context).size.height * 0.55}');
 
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
