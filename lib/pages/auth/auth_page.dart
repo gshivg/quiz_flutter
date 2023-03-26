@@ -3,6 +3,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace
 
 // Flutter Dependencies
+import 'dart:developer';
+
 import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +35,8 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
+    log('${MediaQuery.of(context).size.height * 0.55}');
+
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
@@ -75,9 +79,9 @@ class _AuthPageState extends State<AuthPage> {
         elevation: 5,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.85,
-          height: MediaQuery.of(context).size.height * 0.6 < 450
+          height: MediaQuery.of(context).size.height * 0.55 < 450
               ? 500
-              : MediaQuery.of(context).size.height * 0.6,
+              : MediaQuery.of(context).size.height * 0.55,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.min,
