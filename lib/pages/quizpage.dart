@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
-import 'package:quiz_flutter/apis/quizapi.dart';
+import 'package:quiz_flutter/apis/quizapi/main.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 
 class QuizPage extends StatefulWidget {

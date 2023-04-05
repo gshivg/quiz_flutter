@@ -14,10 +14,12 @@ import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
-import 'package:quiz_flutter/apis/firebase/root_firebase.dart';
+import 'package:quiz_flutter/apis/firebase/main_firebase.dart';
+import 'package:quiz_flutter/apis/firebase/user_firebase.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 import 'package:quiz_flutter/styles/buttons.dart';
 import 'package:quiz_flutter/styles/text_field.dart';
+import 'package:quiz_flutter/utils/ui_helper.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -36,7 +38,6 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
@@ -79,9 +80,7 @@ class _AuthPageState extends State<AuthPage> {
         elevation: 5,
         child: Container(
           width: MediaQuery.of(context).size.width * 0.85,
-          height: MediaQuery.of(context).size.height * 0.55 < 450
-              ? 500
-              : MediaQuery.of(context).size.height * 0.55,
+          height: 500,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.min,
@@ -154,10 +153,21 @@ class _AuthPageState extends State<AuthPage> {
 
   void signInFunction() {
     Fluttertoast.showToast(msg: 'Sign In');
+    UIHelper.showLoadingDialog('Signing In', context);
   }
 
   void signUpFunction() {
-    Fluttertoast.showToast(msg: 'Sign Up');
+    String email = _emailController.text;
+    String password = _passwordController.text;
+    String passwordCNF = _passwordCNFController.text;
+    if (email.isEmpty || password.isEmpty || passwordCNF.isEmpty) {
+      Fluttertoast.showToast(msg: 'Please fill all the fields');
+      return;
+    } else if (password != passwordCNF) {
+      Fluttertoast.showToast(msg: 'Passwords do not match');
+      return;
+    }
+    UserHelper.createNewUser(email, password, context);
   }
 
   otherOption(bool signIn) => Row(

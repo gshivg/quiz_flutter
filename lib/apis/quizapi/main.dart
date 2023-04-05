@@ -13,7 +13,7 @@ class QuizApiHelper {
   String method = "GET";
   String authority = "quizapi3.p.rapidapi.com";
   String path = "/api/v1/questions";
-  String key = API_KEY;
+  String key = QUIZAPI_KEY;
 
   Future<dynamic> getQuestion({
     String? category,
@@ -29,7 +29,7 @@ class QuizApiHelper {
       var questions = await http.get(
         uri,
         headers: {
-          'X-Api-Key': API_KEY,
+          'X-Api-Key': QUIZAPI_KEY,
         },
       );
       var responseData = jsonDecode(questions.body);

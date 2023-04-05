@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 // Package Dependencies
-import 'package:quiz_flutter/pages/homepage.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
 
 class FirebaseHelper {
@@ -32,20 +31,19 @@ class FirebaseHelper {
       UserCredential result = await _auth.signInWithCredential(authCredential);
       User? user = result.user;
       log(user!.uid.toString());
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MyHomePage(
-            signInKey: user.uid.toString(),
-          ),
-        ),
-      );
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => MyHomePage(
+      //       signInKey: user.uid.toString(),
+      //     ),
+      //   ),
+      // );
       signInPreferences.setSignIn(user.uid.toString());
     } catch (e) {
       return e;
     }
   }
-
 
   Future signOut() async {
     try {
