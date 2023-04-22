@@ -27,6 +27,7 @@ dependencies:
   flip_card: ^0.7.0
   fluttertoast: ^8.2.1
   cloud_firestore: ^4.4.5
+  password_strength: ^0.2.0
 
 
 dev_dependencies:

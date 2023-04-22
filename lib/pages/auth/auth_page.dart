@@ -9,6 +9,7 @@ import 'dart:developer';
 import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:password_strength/password_strength.dart';
 // Imported Dependencies
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -166,6 +167,14 @@ class _AuthPageState extends State<AuthPage> {
       return;
     } else if (password != passwordCNF) {
       Fluttertoast.showToast(msg: 'Passwords do not match');
+      return;
+    }
+    double passwordStrength = estimatePasswordStrength(password);
+    if (passwordStrength < 0.6) {
+      Fluttertoast.showToast(
+        msg: 'Password is too weak $passwordStrength',
+      );
+      Navigator.pop(context);
       return;
     }
     UserHelper.createNewUser(email, password, context);
