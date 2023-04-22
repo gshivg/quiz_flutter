@@ -187,6 +187,9 @@ class _AuthPageState extends State<AuthPage> {
           Text(signIn ? "Don't have an account?" : "Already have an account?"),
           TextButton(
             onPressed: () {
+              _emailController.clear();
+              _passwordController.clear();
+              _passwordCNFController.clear();
               FocusScope.of(context).unfocus();
               cardKey.toggleCard();
             },
