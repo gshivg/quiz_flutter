@@ -63,6 +63,18 @@ class UserHelper {
       age: '',
       name: '',
     );
+
+    SignInPreferences signInPreferences = SignInPreferences();
+    signInPreferences.setSignIn(userCredential.user!.uid);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MyHomePage(
+          signInKey: userCredential!.user!.uid,
+        ),
+      ),
+    );
+
     await FirebaseFirestore.instance
         .collection('users')
         .doc(uid)
