@@ -27,7 +27,7 @@ class _QuizPageState extends State<QuizPage> {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
-          appBar: standardAppBar(themeNotifier, 'Quiz Page', context),
+          appBar: standardAppBar(themeNotifier, 'Quiz Page', context, true),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

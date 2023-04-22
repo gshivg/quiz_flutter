@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
 
-AppBar standardAppBar(ThemeModel themeNotifier, String title, BuildContext context) => AppBar(
+AppBar standardAppBar(ThemeModel themeNotifier, String title,
+        BuildContext context, bool leading) =>
+    AppBar(
       title: Text(title),
       actions: [
         IconButton(
@@ -20,4 +22,5 @@ AppBar standardAppBar(ThemeModel themeNotifier, String title, BuildContext conte
           },
         ),
       ],
+      automaticallyImplyLeading: leading,
     );

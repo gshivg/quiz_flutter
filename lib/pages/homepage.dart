@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
+import 'package:quiz_flutter/pages/auth/auth_page.dart';
 import 'package:quiz_flutter/pages/quizpage.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 
@@ -24,13 +25,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
-          appBar: standardAppBar(themeNotifier, 'Home Page', context),
+          appBar: standardAppBar(themeNotifier, 'Home Page', context, false),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'My Tech Quiz',
+                  'Home Page',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
@@ -39,11 +40,18 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const QuizPage()));
+              Navigator.popUntil(context, (route) => route.isFirst);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AuthPage(),
+                ),
+              );
             },
             tooltip: 'Increment',
-            child: const Icon(Icons.add),
+            child: const Icon(
+              Icons.logout,
+            ),
           ),
         );
       },
