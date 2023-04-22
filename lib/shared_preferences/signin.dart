@@ -10,12 +10,12 @@ class SignInPreferences {
     sharedPreferences.setString(PREF_KEY, value);
   }
 
-  getSignIn() async {
+  Future<String?> getSignIn() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getString(PREF_KEY);
   }
 
-  deleteSignIn() async {
+  void deleteSignIn() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.remove(PREF_KEY);
   }
