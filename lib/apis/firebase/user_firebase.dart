@@ -36,7 +36,12 @@ class UserHelper {
     try {
       userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      Fluttertoast.showToast(
+        msg: 'Login Successful',
+      );
+      log(userCredential.user!.uid);
     } on FirebaseAuthException catch (error) {
+      log(error.toString());
       Navigator.pop(context);
       if (error.code == 'email-already-in-use') {
         Fluttertoast.showToast(

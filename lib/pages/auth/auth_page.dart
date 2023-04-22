@@ -41,7 +41,7 @@ class _AuthPageState extends State<AuthPage> {
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
-          appBar: standardAppBar(themeNotifier, 'My Tech Quiz', context),
+          appBar: standardAppBar(themeNotifier, 'My Tech Quiz', context, false),
           body: Center(
             child: SingleChildScrollView(
               child: Container(
@@ -157,6 +157,7 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   void signUpFunction() {
+    UIHelper.showLoadingDialog('Signing In', context);
     String email = _emailController.text;
     String password = _passwordController.text;
     String passwordCNF = _passwordCNFController.text;
