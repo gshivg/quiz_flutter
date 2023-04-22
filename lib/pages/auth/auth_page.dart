@@ -153,12 +153,18 @@ class _AuthPageState extends State<AuthPage> {
       );
 
   void signInFunction() {
-    Fluttertoast.showToast(msg: 'Sign In');
     UIHelper.showLoadingDialog('Signing In', context);
+    String email = _emailController.text;
+    String password = _passwordController.text;
+    if (email.isEmpty || password.isEmpty) {
+      Fluttertoast.showToast(msg: 'Please fill all the fields');
+      return;
+    }
+    UserHelper.signInUser(email, password, context);
   }
 
   void signUpFunction() {
-    UIHelper.showLoadingDialog('Signing In', context);
+    UIHelper.showLoadingDialog('Logging In', context);
     String email = _emailController.text;
     String password = _passwordController.text;
     String passwordCNF = _passwordCNFController.text;
