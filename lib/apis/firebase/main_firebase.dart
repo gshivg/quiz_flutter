@@ -36,9 +36,7 @@ class FirebaseHelper {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => MyHomePage(
-            signInKey: user.uid.toString(),
-          ),
+          builder: (context) => MyHomePage(),
         ),
       );
       signInPreferences.setSignIn(user.uid.toString());

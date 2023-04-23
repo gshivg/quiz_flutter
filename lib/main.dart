@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           theme: themeModel.isDark ? darkTheme() : lightTheme(),
           home: signInKey == null || signInKey == ''
               ? const AuthPage()
-              : MyHomePage(signInKey: signInKey!),
+              : const MyHomePage(),
         );
       }),
     );
