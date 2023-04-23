@@ -26,8 +26,6 @@ class _MyHomePageState extends State<MyHomePage> {
   String uid = '';
   @override
   Widget build(BuildContext context) {
-    checkProfile();
-
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
