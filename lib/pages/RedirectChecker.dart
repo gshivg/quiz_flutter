@@ -12,7 +12,7 @@ class RedirectChecker extends StatefulWidget {
 }
 
 class _RedirectCheckerState extends State<RedirectChecker> {
-  String uid = '';
+  String? uid = '';
   @override
   Widget build(BuildContext context) {
     checkProfile();
@@ -25,7 +25,7 @@ class _RedirectCheckerState extends State<RedirectChecker> {
 
   void checkProfile() async {
     SignInPreferences signInPreferences = SignInPreferences();
-    uid = (await signInPreferences.getSignIn())!;
-    UserHelper.checkProfileCreated(uid, context);
+    uid = await signInPreferences.getSignIn();
+    UserHelper.checkProfileCreated(uid!, context);
   }
 }
