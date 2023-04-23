@@ -154,6 +154,7 @@ class _AuthPageState extends State<AuthPage> {
     String email = _emailController.text;
     String password = _passwordController.text;
     if (email.isEmpty || password.isEmpty) {
+      Navigator.pop(context);
       Fluttertoast.showToast(msg: 'Please fill all the fields');
       return;
     }
@@ -166,9 +167,11 @@ class _AuthPageState extends State<AuthPage> {
     String password = _passwordController.text;
     String passwordCNF = _passwordCNFController.text;
     if (email.isEmpty || password.isEmpty || passwordCNF.isEmpty) {
+      Navigator.pop(context);
       Fluttertoast.showToast(msg: 'Please fill all the fields');
       return;
     } else if (password != passwordCNF) {
+      Navigator.pop(context);
       Fluttertoast.showToast(msg: 'Passwords do not match');
       return;
     }
