@@ -2,9 +2,6 @@
 
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace
 
-// Developer Dependencies
-import 'dart:developer';
-
 // Flutter Dependencies
 import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card_controller.dart';

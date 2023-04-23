@@ -1,6 +1,6 @@
 // This file contains the MyHomePage class which is the home page of the app.
 
-// ignore_for_file: must_be_immutable, prefer_const_constructors
+// ignore_for_file: must_be_immutable, prefer_const_constructors, use_build_context_synchronously
 
 // Flutter Dependencies
 import 'package:flutter/material.dart';
@@ -11,7 +11,6 @@ import 'package:provider/provider.dart';
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/apis/firebase/user_firebase.dart';
 import 'package:quiz_flutter/pages/auth/auth_page.dart';
-import 'package:quiz_flutter/pages/quizpage.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 import 'package:quiz_flutter/utils/ui_helper.dart';
@@ -64,18 +63,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          body: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(
-                  'Home Page',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ],
-            ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                'Home Page',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {

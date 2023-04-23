@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 // Imported Dependencies
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:quiz_flutter/apis/firebase/user_firebase.dart';
 import 'package:quiz_flutter/pages/RedirectChecker.dart';
 import 'package:quiz_flutter/pages/auth/auth_page.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
@@ -15,7 +14,6 @@ import 'package:quiz_flutter/shared_preferences/signin.dart';
 import 'package:quiz_flutter/styles/theme.dart';
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/firebase_options.dart';
-import 'package:quiz_flutter/pages/homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
