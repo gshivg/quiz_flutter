@@ -1,5 +1,7 @@
 // This file contains the AppBar class which is used to create the app bars for the app.
 
+// ignore_for_file: prefer_const_constructors
+
 // Flutter Dependencies
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,4 +25,28 @@ AppBar standardAppBar(ThemeModel themeNotifier, String title,
         ),
       ],
       automaticallyImplyLeading: leading,
+    );
+
+AppBar drawerAppBar(
+        ThemeModel themeNotifier, String title, BuildContext context) =>
+    AppBar(
+      leading: Builder(builder: (context) {
+        return IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () => Scaffold.of(context).openDrawer(),
+        );
+      }),
+      title: Text(title),
+      actions: [
+        IconButton(
+          icon: Icon(
+            themeNotifier.isDark ? CupertinoIcons.sun_max : CupertinoIcons.moon,
+          ),
+          onPressed: () {
+            FocusScope.of(context).unfocus();
+            themeNotifier.toggleTheme();
+          },
+        ),
+      ],
+      automaticallyImplyLeading: false,
     );
