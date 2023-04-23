@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 // Imported Dependencies
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:quiz_flutter/apis/firebase/user_firebase.dart';
+import 'package:quiz_flutter/pages/RedirectChecker.dart';
 import 'package:quiz_flutter/pages/auth/auth_page.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
 // Project Dependencies
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
           theme: themeModel.isDark ? darkTheme() : lightTheme(),
           home: signInKey == null || signInKey == ''
               ? const AuthPage()
-              : const MyHomePage(),
+              : const RedirectChecker(),
         );
       }),
     );
