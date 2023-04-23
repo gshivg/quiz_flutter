@@ -33,7 +33,6 @@ ThemeData darkTheme() => ThemeData(
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStatePropertyAll(Colors.white),
           elevation: MaterialStatePropertyAll(5),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
@@ -67,12 +66,11 @@ ThemeData lightTheme() => ThemeData(
       iconButtonTheme: IconButtonThemeData(
         style: ButtonStyle(
           iconColor: MaterialStatePropertyAll(Colors.black),
-          iconSize: MaterialStatePropertyAll(40),
+          iconSize: MaterialStatePropertyAll(27),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStatePropertyAll(Colors.black87),
           elevation: MaterialStatePropertyAll(5),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
