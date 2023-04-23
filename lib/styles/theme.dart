@@ -25,6 +25,23 @@ ThemeData darkTheme() => ThemeData(
         textColor: Colors.white,
         style: ListTileStyle.drawer,
       ),
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+          iconColor: MaterialStatePropertyAll(Colors.white),
+          iconSize: MaterialStatePropertyAll(27),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: MaterialStatePropertyAll(Colors.white),
+          elevation: MaterialStatePropertyAll(5),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+        ),
+      ),
     );
 
 ThemeData lightTheme() => ThemeData(
@@ -46,5 +63,22 @@ ThemeData lightTheme() => ThemeData(
         shape: RoundedRectangleBorder(),
         textColor: Colors.black,
         style: ListTileStyle.drawer,
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+          iconColor: MaterialStatePropertyAll(Colors.black),
+          iconSize: MaterialStatePropertyAll(40),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: MaterialStatePropertyAll(Colors.black),
+          elevation: MaterialStatePropertyAll(5),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+        ),
       ),
     );
