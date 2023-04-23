@@ -56,40 +56,15 @@ class UserHelper {
       }
     }
 
-    String uid = userCredential.user!.uid;
-    UserModel newUser = UserModel(
-      uid: uid,
-      email: email,
-      age: '',
-      name: '',
-    );
-
     SignInPreferences signInPreferences = SignInPreferences();
     signInPreferences.setSignIn(userCredential.user!.uid);
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => MyHomePage(
-          signInKey: userCredential!.user!.uid,
-        ),
+        builder: (context) => const MyHomePage(),
       ),
     );
-
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(uid)
-        .set(newUser.toMap())
-        .then((value) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CreateProfilePage(
-            firebaseUser: userCredential!.user!,
-            userModel: newUser,
-          ),
-        ),
-      );
-    });
+    checkProfileCreated(userCredential.user!.uid, context);
   }
 
   static Future<dynamic> signInUser(
@@ -124,13 +99,35 @@ class UserHelper {
 
     SignInPreferences signInPreferences = SignInPreferences();
     signInPreferences.setSignIn(userCredential.user!.uid);
+
+    Navigator.popUntil(context, (route) => route.isFirst);
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => MyHomePage(
-          signInKey: userCredential!.user!.uid,
-        ),
+        builder: (context) => const MyHomePage(),
       ),
     );
+  }
+
+  static checkProfileCreated(String uid, BuildContext context) async {
+    FirebaseFirestore.instance.collection('users').doc(uid).get().then((value) {
+      if (value.data() == null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CreateProfilePage(
+              uid: uid,
+            ),
+          ),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const MyHomePage(),
+          ),
+        );
+      }
+    });
   }
 }
