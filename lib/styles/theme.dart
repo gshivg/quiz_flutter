@@ -72,7 +72,7 @@ ThemeData lightTheme() => ThemeData(
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStatePropertyAll(Colors.black),
+          foregroundColor: MaterialStatePropertyAll(Colors.black87),
           elevation: MaterialStatePropertyAll(5),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
