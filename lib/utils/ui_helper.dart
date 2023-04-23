@@ -18,14 +18,46 @@ class UIHelper {
           ),
         ),
       ),
-      backgroundColor: Colors.white54,
+      backgroundColor: Theme.of(context).colorScheme.background,
       elevation: 40,
     );
 
     showDialog(
       context: context,
-      barrierDismissible: true,
+      barrierDismissible: false,
       builder: ((context) => loadingDialog),
+      barrierColor: Colors.transparent,
+    );
+  }
+
+  static void showConfirmationDialog(
+      String title, BuildContext context, Function onYesPressed) {
+    SimpleDialog confirmationDialog = SimpleDialog(
+      title: Text(title),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      elevation: 40,
+      children: [
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SimpleDialogOption(
+              onPressed: () => onYesPressed(),
+              child: const Text('Yes'),
+            ),
+            SimpleDialogOption(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('No'),
+            ),
+          ],
+        ),
+      ],
+    );
+
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: ((context) => confirmationDialog),
       barrierColor: Colors.transparent,
     );
   }
