@@ -19,7 +19,7 @@ class UIHelper {
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      elevation: 40,
+      elevation: 10,
     );
 
     showDialog(
@@ -35,7 +35,7 @@ class UIHelper {
     SimpleDialog confirmationDialog = SimpleDialog(
       title: Text(title),
       backgroundColor: Theme.of(context).colorScheme.background,
-      elevation: 40,
+      elevation: 10,
       children: [
         const SizedBox(height: 20),
         Row(
