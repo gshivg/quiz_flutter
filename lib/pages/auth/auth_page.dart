@@ -64,7 +64,7 @@ class _AuthPageState extends State<AuthPage> {
                         back: signCard(false),
                       ),
                       ImageButton(() {
-                        // firebaseHelper.googleSignIn(context);
+                        firebaseHelper.googleSignIn(context);
                       }, 'google', "Google", context),
                     ],
                   ),
