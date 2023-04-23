@@ -32,6 +32,7 @@ class UserHelper {
     BuildContext context,
   ) async {
     UserCredential? userCredential;
+    Navigator.pop(context);
     UIHelper.showLoadingDialog("Creating your account", context);
     try {
       userCredential = await FirebaseAuth.instance
@@ -39,9 +40,7 @@ class UserHelper {
       Fluttertoast.showToast(
         msg: 'Login Successful',
       );
-      log(userCredential.user!.uid);
     } on FirebaseAuthException catch (error) {
-      log(error.toString());
       Navigator.pop(context);
       if (error.code == 'email-already-in-use') {
         Fluttertoast.showToast(
@@ -58,12 +57,6 @@ class UserHelper {
 
     SignInPreferences signInPreferences = SignInPreferences();
     signInPreferences.setSignIn(userCredential.user!.uid);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const MyHomePage(),
-      ),
-    );
     checkProfileCreated(userCredential.user!.uid, context);
   }
 
@@ -110,24 +103,39 @@ class UserHelper {
   }
 
   static checkProfileCreated(String uid, BuildContext context) async {
-    FirebaseFirestore.instance.collection('users').doc(uid).get().then((value) {
-      if (value.data() == null) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CreateProfilePage(
-              uid: uid,
+    try {
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .get()
+          .then((value) {
+        if (value.data() == null) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CreateProfilePage(
+                uid: uid,
+              ),
             ),
+          );
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const MyHomePage(),
+            ),
+          );
+        }
+      });
+    } catch (e) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CreateProfilePage(
+            uid: uid,
           ),
-        );
-      } else {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const MyHomePage(),
-          ),
-        );
-      }
-    });
+        ),
+      );
+    }
   }
 }
