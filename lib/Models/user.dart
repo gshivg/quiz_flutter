@@ -3,7 +3,7 @@ class UserModel {
   late String name;
   late String email;
   late String age;
-  late int? imgId;
+  late String? imgId;
 
   UserModel({
     required this.email,
