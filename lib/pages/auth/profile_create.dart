@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/Models/user.dart';
@@ -54,8 +55,13 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
                         children: [
                           primaryTextField(nameController, context,
                               'Enter Name', Icons.person),
-                          primaryTextField(ageController, context,
-                              'Enter Your Age', Icons.calendar_today),
+                          primaryTextField(
+                            ageController,
+                            context,
+                            'Enter Your Age',
+                            Icons.calendar_today,
+                            keyboardType: TextInputType.number,
+                          ),
                         ],
                       ),
                       Column(
@@ -77,6 +83,10 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
   }
 
   void createProfile() async {
+    if (nameController.text.isEmpty || ageController.text.isEmpty) {
+      Fluttertoast.showToast(msg: 'Please fill all the fields');
+      return;
+    }
     UserModel user = UserModel(
       uid: widget.uid,
       name: nameController.text,
