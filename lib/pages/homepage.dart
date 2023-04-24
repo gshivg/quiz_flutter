@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/pages/auth/auth_page.dart';
+import 'package:quiz_flutter/pages/game/standard_mode_start_screen.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 import 'package:quiz_flutter/utils/ui_helper.dart';
@@ -78,7 +79,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 homeScreenTileRow(
                   'Standard Mode',
                   Icons.star_border_outlined,
-                  onPressed: comingSoon,
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => StandardModeStartScreen(),
+                    ),
+                  ),
                 ),
                 homeScreenTileRow(
                   'Rapid Fire',
