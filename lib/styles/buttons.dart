@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors, sized_box_for_whitespace, must_be_immutable
 
 import 'package:flutter/material.dart';
 
@@ -75,3 +75,31 @@ imageButtonDesign(String image, String title, BuildContext context) =>
         ],
       ),
     );
+
+class StandardButton extends StatelessWidget {
+  StandardButton({
+    super.key,
+    required this.label,
+    required this.onPressed,
+  });
+  String label;
+  VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      child: SizedBox(
+        width: 100,
+        height: 40,
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
