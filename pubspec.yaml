@@ -28,6 +28,7 @@ dependencies:
   fluttertoast: ^8.2.1
   cloud_firestore: ^4.4.0
   password_strength: ^0.2.0
+  skeletons: ^0.0.3
 
 
 dev_dependencies:
