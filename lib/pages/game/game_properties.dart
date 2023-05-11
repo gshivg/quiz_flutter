@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class GameProperties {
   String difficulty = 'easy';
   String category = '';
@@ -11,3 +13,15 @@ class GameProperties {
     this.timeLimit = 15,
   });
 }
+
+List<Text> categories = [
+  const Text('All Categories'),
+  const Text('Linux'),
+  const Text('DevOps'),
+  const Text('SQL'),
+  const Text('Cloud'),
+  const Text('Code'),
+  const Text('CMS'),
+  const Text('Docker'),
+  const Text('Kubernetes'),
+];

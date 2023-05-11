@@ -30,16 +30,6 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
     const Text('Medium'),
     const Text('Hard'),
   ];
-  List<Text> categories = [
-    const Text('All Categories'),
-    const Text('Linux'),
-    const Text('DevOps'),
-    const Text('Networking'),
-    const Text('Programming'),
-    const Text('Cloud'),
-    const Text('Docker'),
-    const Text('Kubernetes'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +85,10 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
                                 buttonTextStyle: Theme.of(context)
                                     .textTheme
                                     .bodyLarge!
-                                    .copyWith(color: Colors.white),
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary),
                                 onSubmit: (p0) => setState(() {
                                   Fluttertoast.showToast(
                                       msg:
@@ -155,7 +148,10 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
                                 buttonTextStyle: Theme.of(context)
                                     .textTheme
                                     .bodyLarge!
-                                    .copyWith(color: Colors.white),
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary),
                                 onSubmit: (p0) => setState(() {
                                   Fluttertoast.showToast(
                                       msg:
