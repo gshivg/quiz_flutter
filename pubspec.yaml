@@ -42,8 +42,8 @@ dev_dependencies:
 flutter:  
   uses-material-design: true
   fonts:
-    - family: Sono
+    - family: Heming
       fonts: 
-        - asset: assets/fonts/Sono.ttf
+        - asset: assets/fonts/Heming.ttf
   assets:
     - assets/images/
