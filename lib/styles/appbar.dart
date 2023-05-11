@@ -50,3 +50,10 @@ AppBar drawerAppBar(
       ],
       automaticallyImplyLeading: false,
     );
+
+AppBar standardAppBar2(ThemeModel themeNotifier, String title,
+        BuildContext context, bool leading) =>
+    AppBar(
+      title: Text(title),
+      automaticallyImplyLeading: leading,
+    );
