@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 ThemeData darkTheme() => ThemeData(
       brightness: Brightness.dark,
       useMaterial3: true,
-      fontFamily: 'Sono',
+      fontFamily: 'Heming',
       dialogTheme: DialogTheme(
         backgroundColor: Colors.white54,
         elevation: 0,
@@ -46,7 +46,7 @@ ThemeData darkTheme() => ThemeData(
 ThemeData lightTheme() => ThemeData(
       brightness: Brightness.light,
       useMaterial3: true,
-      fontFamily: 'Sono',
+      fontFamily: 'Heming',
       dialogTheme: DialogTheme(
         backgroundColor: Colors.black45,
         elevation: 0,
