@@ -15,13 +15,13 @@ class QuizApiHelper {
   String path = "/api/v1/questions";
   String key = QUIZAPI_KEY;
 
-  Future<dynamic> getQuestion({
-    String? category,
+  Future<dynamic> getQuestions({
+    String category = '',
     String difficulty = 'easy',
     required int limit,
   }) async {
     final uri = Uri.https(authority, path, {
-      'category': category ?? '',
+      'category': category.toLowerCase(),
       'difficulty': difficulty,
       'limit': limit.toString(),
     });
@@ -32,6 +32,10 @@ class QuizApiHelper {
           'X-Api-Key': QUIZAPI_KEY,
         },
       );
+      if (questions.statusCode != 200) {
+        log(questions.body);
+        return;
+      }
       var responseData = jsonDecode(questions.body);
       for (var data in responseData) {
         data.removeWhere((key, value) => key == 'id');
