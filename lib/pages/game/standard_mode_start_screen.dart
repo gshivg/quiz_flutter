@@ -69,7 +69,11 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.category_outlined, size: 30),
+                                Icon(
+                                  Icons.category_outlined,
+                                  size: 30,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                                 SizedBox(width: 10),
                                 Text(
                                   'Select Category',
@@ -83,6 +87,15 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
                                 dismissable: true,
                                 items: categories,
                                 title: 'Select Category',
+                                displayCloseIcon: false,
+                                buttonText: 'Select',
+                                displayButtonIcon: false,
+                                buttonSingleColor:
+                                    Theme.of(context).colorScheme.primary,
+                                buttonTextStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(color: Colors.white),
                                 onSubmit: (p0) => setState(() {
                                   Fluttertoast.showToast(
                                       msg:
@@ -116,7 +129,11 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.offline_bolt_rounded, size: 30),
+                                Icon(
+                                  Icons.offline_bolt_rounded,
+                                  size: 30,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                                 SizedBox(width: 10),
                                 Text(
                                   'Select Difficulty',
@@ -130,6 +147,15 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
                                 dismissable: true,
                                 items: difficulty,
                                 title: 'Select Difficulty',
+                                displayCloseIcon: false,
+                                buttonText: 'Select',
+                                displayButtonIcon: false,
+                                buttonSingleColor:
+                                    Theme.of(context).colorScheme.primary,
+                                buttonTextStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(color: Colors.white),
                                 onSubmit: (p0) => setState(() {
                                   Fluttertoast.showToast(
                                       msg:
