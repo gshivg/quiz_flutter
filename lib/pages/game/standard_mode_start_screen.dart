@@ -89,7 +89,8 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
                                           ' Selected Category: ${categories[p0].data!}');
                                   selectedCategory = categories[p0].data!;
                                 }),
-                                backgroundColor: Theme.of(context).primaryColor,
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.background,
                                 titleStyle:
                                     Theme.of(context).textTheme.bodyLarge!,
                                 pickerTextStyle:
@@ -135,7 +136,8 @@ class _StandardModeStartScreenState extends State<StandardModeStartScreen> {
                                           ' Selected Difficulty: ${difficulty[p0].data!}');
                                   selectedDifficulty = difficulty[p0].data!;
                                 }),
-                                backgroundColor: Theme.of(context).primaryColor,
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.background,
                                 titleStyle:
                                     Theme.of(context).textTheme.bodyLarge!,
                                 pickerTextStyle:
