@@ -19,9 +19,7 @@ List<Text> categories = [
   const Text('Linux'),
   const Text('DevOps'),
   const Text('SQL'),
-  const Text('Cloud'),
   const Text('Code'),
   const Text('CMS'),
   const Text('Docker'),
-  const Text('Kubernetes'),
 ];
