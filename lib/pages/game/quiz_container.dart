@@ -144,39 +144,32 @@ class _QuizOptionSingleState extends State<QuizOptionSingle> {
           setState(() {
             pressed = true;
           });
-
-          if (widget.multicorrect) {
-            if (widget.isCorrect) {
-              multi_answer_response[index - 1] = true;
-            }
+          if (widget.isCorrect) {
+            responses.add(true);
           } else {
-            if (widget.isCorrect) {
-              responses.add(true);
-            } else {
-              responses.add(false);
-            }
-            Future.delayed(
-              const Duration(milliseconds: 250),
-              () {
-                if (index != totalQuestions - 1) {
-                  setState(() {
-                    index += 1;
-                    widget.callback();
-                  });
-                  return;
-                } else {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return GameResult();
-                      },
-                    ),
-                  );
-                }
-              },
-            );
+            responses.add(false);
           }
+          Future.delayed(
+            const Duration(milliseconds: 600),
+            () {
+              if (index != totalQuestions - 1) {
+                setState(() {
+                  index += 1;
+                  widget.callback();
+                });
+                return;
+              } else {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return GameResult();
+                    },
+                  ),
+                );
+              }
+            },
+          );
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
