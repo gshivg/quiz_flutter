@@ -31,6 +31,7 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     super.initState();
     index = 0;
+    responses = [];
   }
 
   void callback() {
@@ -80,6 +81,7 @@ class _GameScreenState extends State<GameScreen> {
                     questionNo: index + 1,
                     questionData: snapshot.data[index],
                     callback: callback,
+                    gameProperties: widget.gameProperties,
                   ),
                 ),
               ),

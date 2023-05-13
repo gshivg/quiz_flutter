@@ -5,22 +5,25 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quiz_flutter/pages/game/game_properties.dart';
 
 import 'package:quiz_flutter/pages/game/game_screen.dart';
 import 'package:quiz_flutter/pages/game/result_screen.dart';
 
 var responses = [];
-var multi_answer_response = [];
 
 class QuizContainer extends StatefulWidget {
-  const QuizContainer(
-      {super.key,
-      required this.questionNo,
-      required this.questionData,
-      required this.callback});
+  const QuizContainer({
+    super.key,
+    required this.questionNo,
+    required this.questionData,
+    required this.callback,
+    required this.gameProperties,
+  });
   final int questionNo;
   final Map<String, dynamic> questionData;
   final Function callback;
+  final GameProperties gameProperties;
   @override
   State<QuizContainer> createState() => _QuizContainerState();
 }
@@ -33,7 +36,6 @@ class _QuizContainerState extends State<QuizContainer> {
 
   @override
   Widget build(BuildContext context) {
-    log(widget.questionData.toString());
     Map<String, dynamic> answers = widget.questionData['answers'];
     String image = widget.questionData['category'].toString().toLowerCase();
     image = (image == '' || image == ' ' || image == null) ? 'atom' : image;
@@ -96,6 +98,7 @@ class _QuizContainerState extends State<QuizContainer> {
                   isCorrect: correctAnswersArray.elementAt(index) as bool,
                   multicorrect: multipleCorrectAnswers,
                   callback: widget.callback,
+                  gameProperties: widget.gameProperties,
                 );
               },
             ),
@@ -114,26 +117,20 @@ class QuizOptionSingle extends StatefulWidget {
     required this.isCorrect,
     required this.callback,
     required this.multicorrect,
+    required this.gameProperties,
   });
   final int index;
   final String option;
   final bool isCorrect;
   final Function callback;
   final bool multicorrect;
+  final GameProperties gameProperties;
   @override
   State<QuizOptionSingle> createState() => _QuizOptionSingleState();
 }
 
 class _QuizOptionSingleState extends State<QuizOptionSingle> {
   late bool pressed = false;
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.multicorrect) {
-      multi_answer_response = [];
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +160,9 @@ class _QuizOptionSingleState extends State<QuizOptionSingle> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return GameResult();
+                      return GameResult(
+                        gameProperties: widget.gameProperties,
+                      );
                     },
                   ),
                 );
