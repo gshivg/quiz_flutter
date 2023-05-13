@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_flutter/apis/firebase/user_firebase.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
-import 'package:skeletons/skeletons.dart';
 
 class RedirectChecker extends StatefulWidget {
   const RedirectChecker({super.key});
@@ -17,12 +16,9 @@ class _RedirectCheckerState extends State<RedirectChecker> {
   @override
   Widget build(BuildContext context) {
     checkProfile();
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        child: SkeletonListView(
-          spacing: 15,
-        ),
+    return Center(
+      child: Image.asset(
+        'assets/images/gifs/loading.gif',
       ),
     );
   }
