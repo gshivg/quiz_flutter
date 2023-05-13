@@ -17,6 +17,7 @@ class _GameResultState extends State<GameResult> {
   @override
   void initState() {
     super.initState();
+    responses = [];
     calculateScore();
   }
 
