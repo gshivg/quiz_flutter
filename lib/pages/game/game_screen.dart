@@ -29,7 +29,6 @@ class _GameScreenState extends State<GameScreen> {
   int correctAnswers = 0;
   @override
   void initState() {
-    responses = [];
     super.initState();
     index = 0;
   }
@@ -40,12 +39,10 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    calculateScore();
     totalQuestions = widget.gameProperties.noOfQuestions;
     return Consumer(builder: (context, ThemeModel themeModel, child) {
       return Scaffold(
-        appBar: standardAppBar2(
-            themeModel, 'Correct Answers $correctAnswers', context, true),
+        appBar: standardAppBar2(themeModel, 'Standard Mode', context, true),
         body: FutureBuilder(
           future: _memoizer.runOnce(
             () => quizApiHelper.getQuestions(
@@ -61,8 +58,6 @@ class _GameScreenState extends State<GameScreen> {
               return Center(
                 child: Image.asset(
                   'assets/images/gifs/loading.gif',
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  fit: BoxFit.fill,
                 ),
               );
             }
@@ -76,14 +71,16 @@ class _GameScreenState extends State<GameScreen> {
                 child: Text('No Data, Try Again Later!'),
               );
             }
-            return IndexedStack(
-              index: index,
-              children: List.generate(
-                widget.gameProperties.noOfQuestions,
-                (index) => QuizContainer(
-                  questionNo: index + 1,
-                  questionData: snapshot.data[index],
-                  callback: callback,
+            return SingleChildScrollView(
+              child: IndexedStack(
+                index: index,
+                children: List.generate(
+                  widget.gameProperties.noOfQuestions,
+                  (index) => QuizContainer(
+                    questionNo: index + 1,
+                    questionData: snapshot.data[index],
+                    callback: callback,
+                  ),
                 ),
               ),
             );
@@ -91,13 +88,5 @@ class _GameScreenState extends State<GameScreen> {
         ),
       );
     });
-  }
-
-  void calculateScore() {
-    for (var response in responses) {
-      if (response) {
-        correctAnswers += 1;
-      }
-    }
   }
 }
