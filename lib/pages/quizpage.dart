@@ -22,7 +22,7 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     QuizApiHelper quizApiHelper = QuizApiHelper();
-    quizApiHelper.getQuestion(category: 'linux', limit: 5);
+    quizApiHelper.getQuestions(category: 'linux', limit: 5);
 
     return Consumer(
       builder: (context, ThemeModel themeNotifier, child) {

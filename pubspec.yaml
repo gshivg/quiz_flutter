@@ -31,6 +31,8 @@ dependencies:
   skeletons: ^0.0.3
   numberpicker: ^2.1.2
   bottom_picker: ^2.0.2
+  async: ^2.10.0
+  flutter_svg: ^2.0.5
 
 
 dev_dependencies:
@@ -48,3 +50,5 @@ flutter:
         - asset: assets/fonts/Heming.ttf
   assets:
     - assets/images/
+    - assets/images/svg/
+    - assets/images/gifs/

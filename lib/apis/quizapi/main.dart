@@ -41,13 +41,19 @@ class QuizApiHelper {
         data.removeWhere((key, value) => key == 'id');
         data.removeWhere((key, value) => key == 'explanation');
         data.removeWhere((key, value) => key == 'description');
-        data.removeWhere((key, value) => key == 'category');
         data.removeWhere((key, value) => key == 'tip');
         data.removeWhere((key, value) => key == 'tags');
         data.removeWhere((key, value) => key == 'difficulty');
       }
       for (var data in responseData) {
-        log(data.toString());
+        if (data['multiple_correct_answers'] == true ||
+            data['multiple_correct_answers'] == 'true') {
+          return getQuestions(
+            limit: limit,
+            category: category,
+            difficulty: difficulty,
+          );
+        }
       }
       return responseData;
     } catch (e) {
