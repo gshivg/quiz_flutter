@@ -49,6 +49,23 @@ class _GameResultState extends State<GameResult> {
   }
 
   void storeScores() async {
+    var doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    if (doc.data()!['high_score'] == null) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update({'high_score': correctAnswers});
+    } else {
+      if (doc.data()!['high_score'] < correctAnswers) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update({'high_score': correctAnswers});
+      }
+    }
     await FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -66,7 +83,7 @@ class _GameResultState extends State<GameResult> {
       'category': widget.gameProperties.category,
       'difficulty': widget.gameProperties.difficulty,
       'noOfQuestions': widget.gameProperties.noOfQuestions,
-      'user': FirebaseAuth.instance.currentUser!.uid,
+      'user': doc.data()!['name'],
     });
   }
 }
