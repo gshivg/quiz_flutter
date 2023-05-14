@@ -16,6 +16,7 @@ primaryTextField(
         decoration: InputDecoration(
           label: displayLabel(labelText, icon),
         ),
+        obscuringCharacter: '*',
         obscureText: isPassword,
         controller: textEditingController,
         keyboardType: keyboardType,
