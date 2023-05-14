@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 // Project Dependencies
 import 'package:quiz_flutter/Models/theme.dart';
 import 'package:quiz_flutter/pages/auth/auth_page.dart';
+import 'package:quiz_flutter/pages/drawer-pages/leaderboard.dart';
 import 'package:quiz_flutter/pages/game/standard_mode_start_screen.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
@@ -51,7 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ListTile(
                   title: Text('Leaderboard'),
                   leading: Icon(Icons.leaderboard_outlined),
-                  onTap: () => Fluttertoast.showToast(msg: 'Leaderboard'),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LeaderBoard())),
                 ),
                 ListTile(
                   title: Text('Settings'),
