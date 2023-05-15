@@ -40,12 +40,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text('Drawer Header'),
                 ),
                 ListTile(
-                  title: Text('My Profile'),
+                  title: Text(
+                    'My Profile',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: Theme.of(context).disabledColor),
+                  ),
                   leading: Icon(Icons.person_outlined),
                   onTap: () => Fluttertoast.showToast(msg: 'Profile'),
                 ),
                 ListTile(
-                  title: Text('Show Friends'),
+                  title: Text(
+                    'Show Friends',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: Theme.of(context).disabledColor),
+                  ),
                   leading: Icon(Icons.people_outlined),
                   onTap: () => Fluttertoast.showToast(msg: 'Show Friends'),
                 ),
@@ -56,7 +68,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       MaterialPageRoute(builder: (context) => LeaderBoard())),
                 ),
                 ListTile(
-                  title: Text('Settings'),
+                  title: Text(
+                    'Settings',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: Theme.of(context).disabledColor),
+                  ),
                   leading: Icon(Icons.settings_outlined),
                   onTap: () => Fluttertoast.showToast(msg: 'Settings'),
                 ),
@@ -92,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   'Rapid Fire',
                   Icons.timer_outlined,
                   onPressed: comingSoon,
+                  disabled: true,
                 ),
                 Expanded(
                   child: Row(
@@ -101,11 +120,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Play with Friends',
                         Icons.people_outline,
                         onPressed: comingSoon,
+                        disabled: true,
                       ),
                       homeScreenTileColumn(
                         'Play with Randoms',
                         Icons.signpost_outlined,
                         onPressed: comingSoon,
+                        disabled: true,
                       ),
                     ],
                   ),
@@ -118,8 +139,13 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  homeScreenTileRow(String title, IconData icon,
-          {double elevation = 5, VoidCallback? onPressed}) =>
+  homeScreenTileRow(
+    String title,
+    IconData icon, {
+    double elevation = 5,
+    VoidCallback? onPressed,
+    bool disabled = false,
+  }) =>
       Expanded(
         child: Padding(
           padding: const EdgeInsets.all(6.0),
@@ -132,11 +158,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icon(
                     icon,
                     size: 40,
+                    color: disabled
+                        ? Theme.of(context).disabledColor
+                        : Theme.of(context).colorScheme.primary,
                   ),
                   SizedBox(width: 15),
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: disabled
+                        ? Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(color: Theme.of(context).disabledColor)
+                        : Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -145,8 +179,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       );
-  homeScreenTileColumn(String title, IconData icon,
-          {double elevation = 5, VoidCallback? onPressed}) =>
+  homeScreenTileColumn(
+    String title,
+    IconData icon, {
+    double elevation = 5,
+    VoidCallback? onPressed,
+    bool disabled = false,
+  }) =>
       Expanded(
         child: Padding(
           padding: const EdgeInsets.all(6.0),
@@ -159,11 +198,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icon(
                     icon,
                     size: 35,
+                    color: disabled
+                        ? Theme.of(context).disabledColor
+                        : Theme.of(context).colorScheme.primary,
                   ),
                   SizedBox(height: 15),
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: disabled
+                        ? Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(color: Theme.of(context).disabledColor)
+                        : Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                 ],
