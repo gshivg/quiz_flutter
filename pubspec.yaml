@@ -1,12 +1,9 @@
 name: quiz_flutter
 description: My Tech Quiz
 
-
 publish_to: 'none' 
 
-
-version: 1.0.0+1
-
+version: 1.0.1+1
 
 environment:
   sdk: '>=2.19.4 <3.0.0'
