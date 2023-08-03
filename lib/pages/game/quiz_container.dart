@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_build_context_synchronously
 
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -38,7 +37,7 @@ class _QuizContainerState extends State<QuizContainer> {
   Widget build(BuildContext context) {
     Map<String, dynamic> answers = widget.questionData['answers'];
     String image = widget.questionData['category'].toString().toLowerCase();
-    image = (image == '' || image == ' ' || image == null) ? 'atom' : image;
+    image = (image == '' || image == ' ') ? 'atom' : image;
     bool multipleCorrectAnswers =
         (widget.questionData['multiple_correct_answers'].toString() == 'true'
             ? true
@@ -86,7 +85,7 @@ class _QuizContainerState extends State<QuizContainer> {
             textAlign: TextAlign.start,
           ),
           SizedBox(height: 20),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height * 0.4,
             child: ListView.builder(
               shrinkWrap: true,

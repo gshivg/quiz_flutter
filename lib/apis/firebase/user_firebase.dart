@@ -11,6 +11,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // Package Dependencies
 import 'package:quiz_flutter/Models/user.dart';
+import 'package:quiz_flutter/pages/auth/auth_page.dart';
 import 'package:quiz_flutter/pages/auth/profile_create.dart';
 import 'package:quiz_flutter/pages/homepage.dart';
 import 'package:quiz_flutter/shared_preferences/signin.dart';
@@ -47,7 +48,8 @@ class UserHelper {
           msg: 'This email is already linked with another account',
         );
         return;
-      } else {
+      }
+       else {
         Fluttertoast.showToast(
           msg: 'Some error has eccured',
         );
@@ -137,5 +139,21 @@ class UserHelper {
         ),
       );
     }
+  }
+
+  static void signOutUser(BuildContext context) async {
+    SignInPreferences signInPreferences = SignInPreferences();
+    signInPreferences.deleteSignIn();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AuthPage(),
+      ),
+    );
+  }
+
+  static Future<String?> checkSignIn() async {
+    SignInPreferences signInPreferences = SignInPreferences();
+    return signInPreferences.getSignIn();
   }
 }

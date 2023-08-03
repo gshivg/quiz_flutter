@@ -1,10 +1,8 @@
-import 'package:bottom_picker/bottom_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_flutter/Models/theme.dart';
-import 'package:quiz_flutter/pages/game/game_properties.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
 
 class LeaderBoard extends StatefulWidget {
@@ -30,7 +28,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Container(
+            child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.9,
               child: FutureBuilder(
                 future: FirebaseFirestore.instance

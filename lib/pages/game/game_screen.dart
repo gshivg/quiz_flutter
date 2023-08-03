@@ -1,7 +1,3 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
-
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_flutter/Models/theme.dart';
@@ -9,9 +5,7 @@ import 'package:quiz_flutter/apis/quizapi/main.dart';
 import 'package:quiz_flutter/pages/game/game_properties.dart';
 import 'package:quiz_flutter/pages/game/quiz_container.dart';
 import 'package:quiz_flutter/styles/appbar.dart';
-import 'package:quiz_flutter/styles/buttons.dart';
 import 'package:async/async.dart';
-import 'package:quiz_flutter/pages/game/quiz_container.dart';
 
 int index = 0;
 late int totalQuestions;
